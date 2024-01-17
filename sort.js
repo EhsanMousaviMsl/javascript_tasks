@@ -7,7 +7,11 @@ async function externalSort(inputFilePath, outputFilePath, chunkSize) {
   const rl = readline.createInterface({
     input: fs.createReadStream(inputFilePath),
     crlfDelay: Infinity,
+
   });
+
+  
+
 
   let currentChunk = [];
   for await (const line of rl) {
@@ -31,7 +35,6 @@ async function externalSort(inputFilePath, outputFilePath, chunkSize) {
 }
 
 function mergeChunks(chunks) {
-  console.log('Merging chunks:', chunks);
   const mergedData = [];
   const heap = new MinHeap();
 
@@ -129,6 +132,8 @@ class MinHeap {
 // Example usage
 const inputFilePath = 'input.txt';
 const outputFilePath = 'output.txt';
-const chunkSize = 1000; // Adjust this value based on your available memory
+const chunkSize = 5000; // Adjust this value based on your available memory
 
 externalSort(inputFilePath, outputFilePath, chunkSize);
+
+
